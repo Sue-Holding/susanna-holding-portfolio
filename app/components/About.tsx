@@ -1,44 +1,96 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-
 
 export default function About() {
-//   const [open, setOpen] = useState(false);
 
-  
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
 
   return (
-    // <h1 className="text-accent text-2xl">About section</h1>
     <section
       id="about"
       className="max-w-5xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center md:items-start gap-10"
     >
-  {/* Image / avatar */}
-  <div className="w-84 h-48 md:w-50 md:h-90 rounded-full overflow-hidden shrink-0">
-    <img
-      src="/sue2.jpg"
-      alt="Susanna Holding"
-      className="w-full h-full object-cover"
-    />
-  </div>
+      {/* Image / avatar */}
+      <motion.div 
+        // initial={{ opacity: 0, y: 20 }}
+        // whileInView={{ opacity: 1, y: 0 }}
+        // transition={{ duration: 0.6 }}
+        // viewport={{ once: true }}
+        whileHover={{ scale: 1.05, rotate: 2 }}
+        className="w-84 h-48 md:w-50 md:h-90 rounded-full overflow-hidden shrink-0"
+      >
+        <img
+          src="/sue2.jpg"
+          alt="Susanna Holding"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
 
-  {/* Text content */}
-  <div className="flex-1">
-    <h2 className="text-3xl font-bold text-primary mb-4">About Me</h2>
-    <p className="text-foreground mb-4">
-      Hi! I’m Susanna, a passionate front-end developer with experience in
-      React, TypeScript, and Next.js. I enjoy building interactive and
-      user-friendly applications that combine clean design with modern
-      technology.
-    </p>
-    <p className="text-foreground">
-      I’m currently expanding my skills in full-stack development, learning
-      more about backend APIs, databases, and deployment. My goal is to create
-      projects that are both functional and visually appealing.
-    </p>
-  </div>
-</section>
+      {/* Text content */}
+      <motion.div 
+        // initial={{ opacity: 0, x: 20 }}
+        // whileInView={{ opacity: 1, x: 0 }}
+        // transition={{ duration: 0.6, delay: 0.2 }}
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="flex-1"
+      >
+        {<motion.h2 
+        variants={item}
+          className="text-3xl font-bold text-primary mb-4"
+        >
+          About Me
+        </motion.h2>}
+        
+        <motion.p variants={item} className="text-foreground mb-4">
+          Hi! I’m Susanna, a passionate front-end developer with experience in
+          React, TypeScript, and Next.js. I enjoy building interactive and
+          user-friendly applications that combine clean design with modern
+          technology.
+        </motion.p>
+
+        <motion.p variants={item} className="text-foreground">
+          I’m currently expanding my skills in full-stack development, learning
+          more about backend APIs, databases, and deployment. My goal is to create
+          projects that are both functional and visually appealing.
+        </motion.p>
+
+        {/* <motion.div variants={item} className="mt-4 flex gap-4">
+          <a
+            href="https://github.com/Sue-Holding"
+            target="_blank"
+            className="text-primary underline hover:text-accent"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/susanna-holding-a4b14643"
+            target="_blank"
+            className="text-primary underline hover:text-accent"
+          >
+            LinkedIn
+          </a>
+        </motion.div> */}
+
+      </motion.div>
+    </section>
   )
 }

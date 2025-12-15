@@ -9,8 +9,9 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/" },
-    { name: "Projects", href: "#projects" },
     { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -22,25 +23,29 @@ export default function Navbar() {
       className="
         fixed top-0 left-0 w-full z-50
         backdrop-blur-xl bg-background/90
-        border-b border-secondary
+        border-b-3 border-accent shadow-[0_0_12px_var(--accent)]
       "
     >
       <div className="max-w-5xl mx-auto h-16 flex items-center justify-between">
         {/* LEFT SIDE (Logo / Name) */}
         <a
           href="/"
-          className="text-lg font-semibold text-primary ml-2 md:ml-0"
+          className="text-2xl font-semibold text-primary ml-2 md:ml-0"
         >
           Susanna Holding
         </a>
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex gap-8">
+        <div className="text-xl hidden md:flex gap-8">
           {links.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-foreground hover:text-accent transition"
+              className="
+                text-foreground 
+                hover:text-accent 
+                transition
+                hover:drop-shadow-[0_0_8px_var(--color-accent)]"
             >
               {link.name}
             </a>
@@ -61,7 +66,9 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="md:hidden bg-background/95 px-6 py-4 border-t border-secondary"
+          className="md:hidden bg-background/95 
+            px-6 py-4 border-t 
+            border-secondary"
         >
           <div className="flex flex-col gap-4">
             {links.map((link) => (
